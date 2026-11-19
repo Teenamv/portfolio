@@ -1,0 +1,558 @@
+---
+import '../styles/global.css';
+import Chatbot from '../components/Chatbot.astro';
+
+const projects = [
+  {
+    n: '01',
+    title: 'Scholar',
+    tags: ['Nest Js', 'Website'],
+    img: '/work/scholars-school.webp',
+    alt: "The Scholars' International School home page",
+    link: 'https://scholarsdoha.com/',
+  },
+  {
+    n: '02',
+    title: 'Aiyakam',
+    tags: ['Wordpress', 'Custom theme'],
+    img: '/work/aikyamm.webp',
+    alt: 'Aikyamm wedding planning home page',
+    link: 'https://aikyamm.com/',
+  },
+  {
+    n: '03',
+    title: 'Nutguru',
+    tags: ['WooCommerce', 'Catalogue'],
+    img: '/work/nutguru.webp',
+    alt: 'The Nut Guru storefront home page',
+    link: 'https://thenutguru.com/',
+  },
+  {
+    n: '04',
+    title: 'Cadbury',
+    tags: ['Next js', 'Website'],
+    img: '/work/veloza.webp',
+    alt: 'Veloza chocolate brand home page',
+    link: 'https://cadbury-one.vercel.app/',
+  },
+  {
+    n: '05',
+    title: 'Fash Educare',
+    tags: ['WordPress', 'Course pages'],
+    img: '/work/fash-educare.webp',
+    alt: 'Fash Educare study-abroad consultancy home page',
+    link: 'https://fasheducare.in/',
+  },
+  {
+    n: '06',
+    title: 'Syah Udaipur',
+    tags: ['WordPress', 'Responsive'],
+    img: '/work/syah-udaipur.webp',
+    alt: 'St. Syah Udaipur restaurant home page',
+    link: 'https://syahudaipur.com/alt/',
+  },
+];
+
+const services = [
+  {
+    n: '01',
+    title: 'WordPress builds',
+    desc: 'Custom themes and plugins, Elementor Pro layouts and theme tweaks — built mobile-first, checked in every browser.',
+    tags: ['Themes', 'Plugins', 'Elementor'],
+  },
+  {
+    n: '02',
+    title: 'E-commerce',
+    desc: 'WooCommerce and Shopify storefronts: product catalogues, pricing, inventory and the apps that keep a store running.',
+    tags: ['WooCommerce', 'Shopify', 'Catalogue'],
+  },
+  {
+    n: '03',
+    title: 'Front-end development',
+    desc: 'Interactive UI built with React, Next.js, Nuxt.js and htmx — component by component, no bloated templates.',
+    tags: ['React', 'Next.js', 'htmx'],
+  },
+  {
+    n: '04',
+    title: 'Speed & Core Web Vitals',
+    desc: 'Image compression, caching, asset and database clean-up, so pages open fast on a phone in a queue.',
+    tags: ['Performance', 'Caching', 'Images'],
+  },
+  {
+    n: '05',
+    title: 'Technical SEO',
+    desc: 'Clean structure, sensible headings, analytics in place — the boring work that gets a page found.',
+    tags: ['SEO', 'Analytics', 'Structure'],
+  },
+  {
+    n: '06',
+    title: 'Care & upkeep',
+    desc: 'Updates, fixes and content changes after launch. Sites stay current instead of quietly breaking.',
+    tags: ['Updates', 'Fixes', 'Support'],
+  },
+];
+
+const jobs = [
+  {
+    period: 'Oct 2025 — Present',
+    place: 'Kakkanad, Ernakulam',
+    role: 'Web Developer',
+    company: 'WebNFX',
+    points: [
+      'Builds and customises WordPress websites, themes and plugins with a focus on mobile responsiveness and cross-browser compatibility.',
+      'Creates interactive UI components with modern JavaScript — React, Next.js and htmx.',
+      'Works directly with clients to gather requirements and deliver fully functional sites to tight deadlines.',
+      'Improves performance through asset optimisation, image compression, caching and cleaner database practices.',
+    ],
+  },
+  {
+    period: '2023 — 2024',
+    place: 'Kochi, Kerala',
+    role: 'Web Developer',
+    company: 'Ziphoenix Company',
+    points: [
+      'Ran e-commerce platforms end to end, installing and updating WordPress plugins.',
+      'Uploaded and maintained product catalogues — images, descriptions, prices and inventory — with information kept accurate.',
+      'Reworked homepage layouts and user flows to improve usability and product discovery.',
+    ],
+  },
+  {
+    period: 'Jul 2017 — Mar 2021',
+    place: 'Kundara, Kollam',
+    role: 'Computer Teacher',
+    company: 'St. Thomas LPG School',
+    points: [
+      'Taught foundational computer science concepts to school students.',
+      'Used Google Classroom and Schoology to support learning and track progress.',
+    ],
+  },
+  {
+    period: '2015 — 2017',
+    place: 'Trivandrum, Kerala',
+    role: 'Software Developer',
+    company: 'Alanzo Company',
+    points: [
+      'Delivered custom WordPress websites for 5+ clients on schedule, with attention to functionality and performance.',
+      'Customised Shopify storefronts and integrated apps for analytics, email marketing and customer reviews.',
+    ],
+  },
+];
+
+const education = [
+  {
+    kind: 'Degree',
+    title: 'Master of Computer Applications (MCA)',
+    detail: 'Kerala University, India · Graduated Sep 2015',
+  },
+  {
+    kind: 'Degree',
+    title: 'B.Sc. Computer Science',
+    detail: 'Kerala University, India · Graduated Apr 2012',
+  },
+  {
+    kind: 'Certification',
+    title: 'Prompt Engineering',
+    detail: 'One Million Prompters Initiative · Dubai Future Foundation & Dubai Centre for AI · 2026',
+  },
+  {
+    kind: 'Certification',
+    title: 'Strategic Planning in the AI Age',
+    detail: 'HP LIFE Foundation · August 2026',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Are you available for freelance work?',
+    a: 'Yes. I take on WordPress builds, store set-ups, redesigns and front-end work alongside my full-time role, so I keep the number of projects small. Tell me the deadline and I will tell you honestly whether it fits.',
+  },
+  {
+    q: 'What do you build with?',
+    a: 'WordPress and Elementor Pro for content-driven sites, WooCommerce and Shopify for stores, and React, Next.js, Nuxt.js or htmx when a project needs real application behaviour. Plain HTML, CSS and modern JavaScript underneath all of it.',
+  },
+  {
+    q: 'Can you fix or redesign the site I already have?',
+    a: 'That is most of what I do. I audit what is there — structure, speed, mobile behaviour, plugin health — then either repair it or rebuild the parts that are holding you back. No point starting from zero if the foundation is fine.',
+  },
+  {
+    q: 'Will it be fast?',
+    a: 'Speed is part of the build, not an afterthought. Compressed images, proper caching, trimmed plugins and a look at Core Web Vitals before launch rather than after.',
+  },
+  {
+    q: 'Do you work remotely?',
+    a: 'Yes. I am based in Deira, Dubai and work with clients remotely across time zones, with calls and written updates so nothing gets lost.',
+  },
+  {
+    q: 'How do we start?',
+    a: 'One message with a rough idea, a deadline and a budget range. I will reply with what is realistic, a scope and a timeline before any work begins.',
+  },
+];
+
+const ticker = [
+  'WordPress',
+  'WooCommerce',
+  'Shopify',
+  'React',
+  'Next.js',
+  'Nuxt.js',
+  'htmx',
+  'Elementor Pro',
+  'Core Web Vitals',
+  'Technical SEO',
+  'JavaScript',
+  'AI tools',
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Teena M Varghese — Web Developer, WordPress & E-commerce, Dubai</title>
+    <meta
+      name="description"
+      content="Teena M Varghese is a web developer in Dubai building fast, responsive WordPress, WooCommerce and Shopify sites, with React and Next.js front-ends."
+    />
+    <meta name="theme-color" content="#0a0f1e" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  </head>
+  <body>
+    <header class="nav" id="top" data-open="false">
+      <div class="nav__inner">
+        <a class="logo" href="#top" aria-label="Teena M Varghese — home">
+          <img src="/logo.svg" alt="Teena M Varghese" width="46" height="46" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a class="btn btn--sm btn--talk" href="#contact">Hire Me</a>
+          <button class="nav__toggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <i></i><i></i><i></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- hero -->
+      <section class="hero">
+        <div class="wrap hero__inner">
+          <p class="hero__greet">Hello There! 👋</p>
+
+          <div class="hero__avatar">
+            <img src="/avatar.svg" alt="Teena M Varghese" width="200" height="200" />
+          </div>
+
+          <h1>I'm <span>Teena M Varghese</span></h1>
+          <p class="hero__role">Web Developer · WordPress &amp; E-commerce</p>
+
+          <p class="hero__sub">
+            Scholar, Aiyakam, Nutguru and Cadbury — four builds on the move. WordPress, Shopify and
+            custom front-ends, all made to load fast and sell well.
+          </p>
+
+          <span class="hero__badge">3+ Years Around Websites &amp; Code</span>
+
+          <div class="hero__cta">
+            <a class="btn btn--outline" href="#work">View My Work</a>
+            <a class="btn" href="#contact">Let's Connect</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ticker -->
+      <div class="ticker" aria-hidden="true">
+        <div class="ticker__track">
+          {
+            [...ticker, ...ticker].map((t) => (
+              <span>
+                <span class="ticker__star">⭐</span>
+                {t}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- about -->
+      <section class="section" id="about">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="kicker">01 — About</p>
+            <h2>About <em>Me</em></h2>
+            <p>
+              An MCA and a decade around websites — stores, school classrooms and client builds in
+              between. The thread through all of it: make the thing work properly.
+            </p>
+          </div>
+
+          <div class="about__body">
+            <p>
+              I'm a web developer with an MCA and hands-on experience across website development,
+              WordPress and e-commerce. At <strong>WebNFX</strong> I build and customise WordPress
+              themes and plugins and put together interactive interfaces in React, Next.js and htmx.
+            </p>
+            <p>
+              Before that I managed e-commerce platforms at <strong>Ziphoenix</strong>, keeping product
+              catalogues accurate and reworking layouts so people actually found what they came for.
+              Earlier still I built client sites at <strong>Alanzo</strong>, and taught computer
+              science in a school for four years — which is where the habit of explaining things
+              clearly comes from.
+            </p>
+            <p>
+              I work comfortably with generative AI tools too: ChatGPT, Claude and Gemini, with a
+              certification in prompt engineering from Dubai Future Foundation.
+            </p>
+          </div>
+
+          <div class="facts">
+            <div class="fact"><b>3+</b><span>Years around websites &amp; code</span></div>
+            <div class="fact"><b>5+</b><span>Client sites delivered at Alanzo</span></div>
+            <div class="fact"><b>MCA</b><span>Kerala University, 2015</span></div>
+            <div class="fact"><b>2026</b><span>Prompt engineering certified</span></div>
+          </div>
+
+          <ul class="chips" aria-label="Languages">
+            <li>English — fluent</li>
+            <li>Hindi — proficient</li>
+            <li>Malayalam — native</li>
+          </ul>
+
+       </div>
+      </section>
+
+      <!-- selected work -->
+      <section class="section section--accent" id="work">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="kicker">02 — Portfolio</p>
+            <h2>Selected Works</h2>
+            <p>A collection of some of the projects I have worked on throughout my career.</p>
+          </div>
+
+          <div class="work">
+            {
+              projects.map((p) => (
+                <a
+                  class="work__card"
+                  href={p.link || undefined}
+                  target={p.link ? '_blank' : undefined}
+                  rel={p.link ? 'noopener' : undefined}
+                  aria-label={p.link ? `${p.title} — opens in a new tab` : undefined}
+                >
+                  <div class="work__shot">
+                    <img src={p.img} alt={p.alt} width="1536" height="727" loading="lazy" />
+                  </div>
+                  <div class="work__meta">
+                    <span class="work__num">{p.n}</span>
+                    <h3>{p.title}</h3>
+                    <ul class="work__tags">
+                      {p.tags.map((t) => (
+                        <li>{t}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- services -->
+      <section class="section" id="services">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="kicker">03 — What I do</p>
+            <h2>My <em>Services</em></h2>
+            <p>
+              Design or rebuild, store or brochure site — from the first layout to the plugin updates
+              two years later.
+            </p>
+          </div>
+
+          <div class="services">
+            {
+              services.map((s) => (
+                <article class="service">
+                  <span class="service__num">{s.n}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.desc}</p>
+                  <ul>
+                    {s.tags.map((t) => (
+                      <li>{t}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- experience -->
+      <section class="section section--accent" id="experience">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="kicker">04 — Career</p>
+            <h2>Experience &amp; Education</h2>
+            <p>From a school computer lab to WordPress and Shopify builds — four roles, one direction.</p>
+          </div>
+
+          <div class="jobs">
+            {
+              jobs.map((j, i) => (
+                <article class="job" style={`--i:${i}`}>
+                  <div class="job__side">
+                    <span class="job__index">{String(i + 1).padStart(2, '0')}</span>
+                    <h3 class="job__role">{j.role}</h3>
+                    <p class="job__company">{j.company}</p>
+                    <div class="job__dates">
+                      <span>{j.period}</span>
+                      <span>{j.place}</span>
+                    </div>
+                  </div>
+                  <ul>
+                    {j.points.map((p) => (
+                      <li>{p}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))
+            }
+          </div>
+
+          <div class="edu">
+            {
+              education.map((e) => (
+                <article class="edu__card">
+                  <p class="kicker">{e.kind}</p>
+                  <h3>{e.title}</h3>
+                  <p>{e.detail}</p>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- faq -->
+      <section class="section" id="faq">
+        <div class="wrap">
+          <div class="section__head">
+            <p class="kicker">05 — FAQ</p>
+            <h2>Go on, <em>ask.</em></h2>
+            <p>
+              The questions that come up before every project. If yours is missing, ask Tia in the
+              corner — she knows this site by heart.
+            </p>
+          </div>
+
+          <div class="faq">
+            {
+              faqs.map((f, i) => (
+                <details open={i === 0}>
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- contact -->
+      <section class="contact" id="contact">
+        <div class="wrap contact__inner">
+          <p class="kicker">06 — Let's talk</p>
+          <h2>Ready to Build Something <em>Great?</em></h2>
+          <p class="contact__sub">
+            A shop that needs a proper storefront, a site that has gone stale, or a front-end that
+            needs building — one message is enough to start.
+          </p>
+
+          <div class="contact__actions">
+            <a
+              class="btn"
+              href="https://wa.me/971502669804?text=Hi%20Teena!%20I%27d%20like%20to%20talk%20about%20a%20website."
+              target="_blank"
+              rel="noopener">Chat on WhatsApp</a
+            >
+            <a class="btn btn--outline" href="mailto:teen.mvarghese@gmail.com">Send an email</a>
+          </div>
+
+          <div class="contact__list">
+            <a href="mailto:teen.mvarghese@gmail.com">
+              <span class="kicker">Email</span>
+              <span>teen.mvarghese@gmail.com</span>
+            </a>
+            <a href="tel:+971502669804">
+              <span class="kicker">Phone</span>
+              <span>+971 50 266 9804</span>
+            </a>
+            <div>
+              <span class="kicker">Studio</span>
+              <span>Al Baraha, Deira, Dubai, UAE</span>
+            </div>
+            <div>
+              <span class="kicker">Usually</span>
+              <span>Reply within one working day</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="footer__top">
+          <a class="footer__brand" href="#top">
+            <img src="/logo.svg" alt="" width="44" height="44" />
+            <span>
+              <strong>Teena M Varghese</strong>
+              <span>Web developer · Dubai, UAE</span>
+            </span>
+          </a>
+          <nav class="footer__nav">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#experience">Experience</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Let's talk</a>
+            <a href="#top">Back to top ↑</a>
+          </nav>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2026 Teena M Varghese. All rights reserved.</span>
+          <span>Made in Dubai, with ❤️ and strong coffee.</span>
+        </div>
+      </div>
+    </footer>
+
+    <Chatbot />
+
+    <script>
+      // mobile menu
+      const nav = document.querySelector('.nav');
+      const toggle = document.querySelector('.nav__toggle');
+      toggle?.addEventListener('click', () => {
+        const open = nav?.getAttribute('data-open') === 'true';
+        nav?.setAttribute('data-open', String(!open));
+        toggle.setAttribute('aria-expanded', String(!open));
+      });
+      document.querySelectorAll('.nav__links a').forEach((a) =>
+        a.addEventListener('click', () => {
+          nav?.setAttribute('data-open', 'false');
+          toggle?.setAttribute('aria-expanded', 'false');
+        }),
+      );
+    </script>
+  </body>
+</html>
